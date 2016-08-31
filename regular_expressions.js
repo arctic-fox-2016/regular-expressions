@@ -1,6 +1,7 @@
 "use strict"
 // Determine whether a string contains a nomor KTP
 function has_ktp(string) {
+  return /[\d][\d][\d][-][\d][\d][-][\d][\d][\d][\d]/.test(string);
 
 }
 
@@ -13,8 +14,13 @@ console.log(has_ktp("please confirm your identity: XXX-XX-1422") == false)
 // Return the Social Security number from a string.
 function grab_ktp(string) {
 
+  return string.match(/[\d][\d][\d][-][\d][\d][-][\d][\d][\d][\d]/g)
+
+
 }
 
+//console.log("please don't share this: 234-60-1422".match(/[\d][\d][\d][-][\d][\d][-][\d][\d][\d][\d]/));
+// → ["an", "an"]
 console.log("grab_ktp returns an nomor KTP if the string has an nomor KTP")
 console.log(grab_ktp("please don't share this: 234-60-1422") == "234-60-1422")
 
@@ -23,6 +29,11 @@ console.log(grab_ktp("please confirm your identity: XXX-XX-1422") == null)
 
 // Return all of the Social Security numbers from a string.
 function grab_all_nomor_ktp(string) {
+
+
+  var ktp = string.match(/[\d][\d][\d][-][\d][\d][-][\d][\d][\d][\d]/g)
+  return ktp;
+
 
 }
 
@@ -38,8 +49,14 @@ console.log(grab_all_nomor_ktp("please confirm your identity: XXX-XX-1422"))
 
 // Obfuscate all of the nomor KTP in a string. Example: XXX-XX-4430.
 function hide_all_nomor_ktp(string) {
+  var text = string;
+  // Change this call.
+  return text.replace(/[\d][\d][\d][-][\d][\d][-][\d][\d][\d][\d]/g, "XXX ");
 
 }
+
+
+
 
 console.log("hide_all_nomor_ktp obfuscates any nomor KTP in the string")
 console.log(hide_all_nomor_ktp("234-60-1422, 350-80-0744, 013-60-8762"))
@@ -55,6 +72,13 @@ console.log(hide_all_nomor_ktp(string) == string)
 // Example: 480.01.4430 and 480014430 would both be 480-01-4430.
 function format_nomor(string) {
 
+  var ktptype1 = string.match(/[\d][\d][\d][\d][\d][\d][\d][\d][\d]/g)
+  return ktptype1;
+  var ktptype2 = string.match(/[\d][\d][\d][.][\d][\d][.][\d][\d][\d][\d]/g)
+  return ktptype2;
+  var ktptype3 = string.match(/[\d][\d][\d][-][\d][\d][-][\d][\d][\d][\d]/g)
+  return ktptype3;
+  // ktptype1.replace(/[\d][\d][\d][\d][\d][\d][\d][\d][\d]/g,/[\d][\d][\d][-][\d][\d][-][\d][\d][\d][\d]/g)
 }
 
 console.log("format_nomor finds and reformat any nomor KTP in the string")
