@@ -1,9 +1,7 @@
 "use strict"
 // Determine whether a string contains a nomor KTP
 function has_ktp(string) {
-
-}
-
+  return (/[\d][\d][\d][-][\d][\d][-][\d][\d][\d][\d]/.test(string))
 console.log("has_ktp returns true if it has what looks like a nomor KTP")
 console.log(has_ktp("please don't share this: 234-60-1422") == true)
 
@@ -12,7 +10,9 @@ console.log(has_ktp("please confirm your identity: XXX-XX-1422") == false)
 
 // Return the Social Security number from a string.
 function grab_ktp(string) {
+  if () {
 
+  }
 }
 
 console.log("grab_ktp returns an nomor KTP if the string has an nomor KTP")
